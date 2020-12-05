@@ -6,25 +6,31 @@ interface InitialState {
     userName: string;
     token: string;
   } | null;
-  errorMsg?: string;
+  loginErrorMsg?: string;
+  logging: boolean;
 }
 
-const initialState: InitialState = { user: null };
+const initialState: InitialState = { user: null, logging: false };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(loginUser.pending, (state, action) => {
+      state.logging = true;
+    });
     builder.addCase(loginUser.fulfilled, (state, action) => {
-      state.errorMsg = undefined;
+      state.loginErrorMsg = undefined;
+      state.logging = false;
       state.user = {
         token: action.payload.accessToken!,
         userName: action.payload.userName!,
       };
     });
     builder.addCase(loginUser.rejected, (state, action) => {
-      state.errorMsg = action.payload!.loginError;
+      state.logging = false;
+      state.loginErrorMsg = action.payload!.loginError;
       state.user = null;
     });
   },

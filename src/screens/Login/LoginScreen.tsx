@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import {
   Button,
@@ -9,6 +10,8 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
+import { RootState } from "../../store/rootReducer";
+import { loginUser } from "../../store/slices/auth/authSlice.utils";
 
 interface LocationState {
   userName?: string;
@@ -22,6 +25,11 @@ const LoginScreen: FunctionComponent = () => {
   );
   const [password, setPassword] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
+  const loginError = useSelector(
+    (state: RootState) => state.authSlice.loginErrorMsg
+  );
+
+  const [logging, setLogging] = useState<boolean>(false);
 
   const login = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -30,8 +38,13 @@ const LoginScreen: FunctionComponent = () => {
       setErrorMsg("Please enter all the fields.");
     } else {
       setErrorMsg("");
+      loginUser({ userName, password });
     }
   };
+
+  useEffect(() => {
+    setErrorMsg(loginError || "");
+  }, [loginError]);
 
   return (
     <motion.div
@@ -73,7 +86,7 @@ const LoginScreen: FunctionComponent = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
 
-              <Button color="blue" fluid size="large">
+              <Button color="blue" fluid size="large" disabled={logging}>
                 Login
               </Button>
             </Segment>
