@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from "react";
+import Chat from "../../Chat/Chat";
+import TodoConfigurator from "../../TodoConfigurator/TodoConfigurator";
 
 const Dashboard: FunctionComponent = () => {
   return (
@@ -67,22 +69,20 @@ const Dashboard: FunctionComponent = () => {
 
       <div
         style={{
-          backgroundColor: "gold",
           gridColumn: "18 / span 3",
           gridRow: "1 / span 16",
         }}
       >
-        TODO
+        <TodoConfigurator />
       </div>
 
       <div
         style={{
-          backgroundColor: "gray",
           gridColumn: "1 / span 17",
           gridRow: "13 / span 4",
         }}
       >
-        Chat
+        <Chat />
       </div>
     </div>
   );
