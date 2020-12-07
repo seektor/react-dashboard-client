@@ -8,6 +8,7 @@ const Container = styled.div`
 
 const Body = styled.div`
   flex-grow: 1;
+  min-height: 0;
 `;
 
 const S = { Container, Body };

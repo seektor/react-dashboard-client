@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import S from "./App.styled";
 import ToastsContainer from "./components/shared/ToastsContainer/ToastsContainer";
-import DashboardScreen from "./screens/Dashboard/DashboardScreen";
 import LoginScreen from "./screens/Login/LoginScreen";
+import MainScreen from "./screens/Main/MainScreen";
 import RegisterScreen from "./screens/Register/RegisterScreen";
 import store from "./store/store";
 
@@ -16,7 +16,7 @@ function App() {
         <Provider store={store}>
           <AnimatePresence>
             <Switch>
-              <Route path="/" exact component={DashboardScreen} />
+              <Route path="/" exact component={MainScreen} />
 
               <Route path="/login" exact component={LoginScreen} />
               <Route path="/register" exact component={RegisterScreen} />

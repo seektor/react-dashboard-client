@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from "react";
-import Chat from "../../Chat/Chat";
-import TodoConfigurator from "../../TodoConfigurator/TodoConfigurator";
+import Chat from "../components/Chat/Chat";
+import SalesCountDisplay from "../components/SalesCountDisplay/SalesCountDisplay";
+import TodoConfigurator from "../components/TodoConfigurator/TodoConfigurator";
+import UsersCountDisplay from "../components/UsersCountDisplay/UsersCountDisplay";
 
 const Dashboard: FunctionComponent = () => {
   return (
@@ -16,20 +18,20 @@ const Dashboard: FunctionComponent = () => {
     >
       <div
         style={{
-          backgroundColor: "orange",
           gridColumn: "1 / span 2",
           gridRow: "1 / span 2",
         }}
       >
-        User
+        <UsersCountDisplay />
       </div>
       <div
         style={{
-          backgroundColor: "orange",
           gridColumn: "3 / span 2",
           gridRow: "1 / span 2",
         }}
-      ></div>
+      >
+        <SalesCountDisplay />
+      </div>
       <div
         style={{
           backgroundColor: "orange",

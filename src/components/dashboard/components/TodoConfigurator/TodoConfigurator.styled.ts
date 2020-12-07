@@ -1,12 +1,9 @@
 import { Header } from "semantic-ui-react";
 import styled from "styled-components/macro";
+import { DashboardTile } from "../../../../styles/common.styled";
 
 const Container = styled.div`
-  height: 100%;
-  width: 100%;
-  border-radius: 4px;
-  padding: 8px 4px;
-  background-color: white;
+  ${DashboardTile};
 `;
 
 const HeaderContainer = styled.div`
