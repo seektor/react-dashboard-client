@@ -1,11 +1,19 @@
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { Button, Loader } from "semantic-ui-react";
-import S from "./TodoConfigurator.styled";
+import { showToast } from "../../../../store/slices/toasts/toastsSlice";
+import { useAppDispatch } from "../../../../store/store";
+import { ToastType } from "../../../../types/ToastType";
 import TodoItem from "./TodoItem/TodoItem";
+import S from "./TodoList.styled";
 
-const TodoConfigurator: FunctionComponent = () => {
+const TodoList: FunctionComponent = () => {
+  const dispatch = useAppDispatch();
   const [open, setOpen] = React.useState(false);
+
+  useEffect(() => {
+    dispatch(showToast({ msg: "Will i work???", type: ToastType.Success }));
+  }, [dispatch]);
 
   return (
     <S.Container>
@@ -68,4 +76,4 @@ const TodoConfigurator: FunctionComponent = () => {
   );
 };
 
-export default TodoConfigurator;
+export default TodoList;

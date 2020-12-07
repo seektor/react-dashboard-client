@@ -3,7 +3,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import S from "./App.styled";
-import ToastsContainer from "./components/shared/ToastsContainer/ToastsContainer";
+import ToastsManager from "./components/shared/ToastsManager/ToastsManager";
 import LoginScreen from "./screens/Login/LoginScreen";
 import MainScreen from "./screens/Main/MainScreen";
 import RegisterScreen from "./screens/Register/RegisterScreen";
@@ -25,7 +25,7 @@ function App() {
             </Switch>
           </AnimatePresence>
 
-          <ToastsContainer />
+          <ToastsManager />
         </Provider>
       </S.Container>
     </BrowserRouter>

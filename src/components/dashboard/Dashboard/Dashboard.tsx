@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import Chat from "../components/Chat/Chat";
 import SalesCountDisplay from "../components/SalesCountDisplay/SalesCountDisplay";
-import TodoConfigurator from "../components/TodoConfigurator/TodoConfigurator";
+import TodoList from "../components/TodoList/TodoList";
 import UsersCountDisplay from "../components/UsersCountDisplay/UsersCountDisplay";
 
 const Dashboard: FunctionComponent = () => {
@@ -75,7 +75,7 @@ const Dashboard: FunctionComponent = () => {
           gridRow: "1 / span 16",
         }}
       >
-        <TodoConfigurator />
+        <TodoList />
       </div>
 
       <div
