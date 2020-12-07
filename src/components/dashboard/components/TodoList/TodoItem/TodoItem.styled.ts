@@ -6,6 +6,7 @@ const Container = styled.div`
   border-radius: 8px;
   padding: 8px 4px;
   transform: rotate(2deg);
+  margin-bottom: 8px;
 `;
 
 const HeaderContainer = styled.div`

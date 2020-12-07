@@ -20,10 +20,7 @@ const toastsSlice = createSlice({
     },
     removeToast: (state, action: PayloadAction<string>) => {
       const idToRemove = action.payload;
-      const removeIndex = state.findIndex((toast) => toast.id === idToRemove);
-      if (removeIndex !== -1) {
-        delete state[removeIndex];
-      }
+      return state.filter((toast) => toast.id !== idToRemove);
     },
   },
 });

@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const StyledMessage = styled(Message)`
-  margin-bottom: 8px;
+  margin-bottom: 8px !important;
 `;
 
 const S = { Container, StyledMessage };

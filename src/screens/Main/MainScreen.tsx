@@ -38,15 +38,21 @@ const MainScreen: FunctionComponent = () => {
       </Segment>
 
       <S.Body>
-        <div
+        {selectedItem === "dashboard" && <Dashboard />}
+        {/* <div
           style={{
             display: selectedItem === "dashboard" ? "block" : "none",
             height: "100%",
           }}
         >
           <Dashboard />
-        </div>
-        <div style={{ display: selectedItem === "info" ? "block" : "none" }}>
+        </div> */}
+        <div
+          style={{
+            display: selectedItem === "info" ? "block" : "none",
+            height: "100%",
+          }}
+        >
           <Info />
         </div>
       </S.Body>
