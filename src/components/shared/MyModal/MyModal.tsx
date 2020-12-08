@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { FunctionComponent } from "react";
+import S from "./MyModal.styled";
 
 interface MyModalProps {
   open: boolean;
@@ -34,14 +35,9 @@ const MyModal: FunctionComponent<MyModalProps> = ({
             alignItems: "center",
           }}
         >
-          <motion.div
-            layoutId={layoutId}
-            style={{
-              height: "100px",
-              width: "100px",
-              backgroundColor: "red",
-            }}
-          ></motion.div>
+          <S.MotionDivContainer layoutId={layoutId}>
+            {children}
+          </S.MotionDivContainer>
         </motion.div>
       )}
     </AnimatePresence>

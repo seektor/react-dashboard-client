@@ -32,13 +32,6 @@ const Dashboard: FunctionComponent = () => {
       >
         <SalesCountDisplay />
       </div>
-      <div
-        style={{
-          backgroundColor: "orange",
-          gridColumn: "5 / span 2",
-          gridRow: "1 / span 2",
-        }}
-      ></div>
 
       <div
         style={{
