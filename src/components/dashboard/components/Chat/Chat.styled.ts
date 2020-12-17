@@ -10,17 +10,15 @@ const Container = styled.div`
 
 const MsgList = styled.div`
   flex-grow: 1;
+  overflow: auto;
   margin-bottom: 8px;
 `;
 
 const ServerMsg = styled.span`
+  display: block;
   font-weight: bold;
   color: #27187e;
-`;
-
-const MsgContainer = styled.div`
-  width: 100%;
-  display: flex;
+  margin-bottom: 8px;
 `;
 
 const MsgAuthor = styled.span`
@@ -32,7 +30,7 @@ const SelfMsgAuthor = styled(MsgAuthor)`
 `;
 
 const Msg = styled.span`
-  flex-grow: 1;
+  margin-bottom: 8px;
 `;
 
 const InputRow = styled.div`
@@ -48,7 +46,6 @@ const S = {
   Container,
   MsgList,
   ServerMsg,
-  MsgContainer,
   MsgAuthor,
   SelfMsgAuthor,
   Msg,
