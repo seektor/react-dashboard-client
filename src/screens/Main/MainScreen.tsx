@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
 import { useSelector } from "react-redux";
-import { Header, Menu, Segment } from "semantic-ui-react";
 import Dashboard from "../../components/dashboard/Dashboard/Dashboard";
 import { RootState } from "../../store/rootReducer";
 import S from "./MainScreen.styled";
@@ -11,25 +10,9 @@ const MainScreen: FunctionComponent = () => {
 
   return (
     <S.Container>
-      <Segment inverted attached>
-        <Menu inverted secondary>
-          <Menu.Item
-            name="home"
-            active={true}
-            onClick={() => setSelectedItem("dashboard")}
-          />
-
-          <Menu.Menu position="right">
-            {userName && (
-              <Menu.Item>
-                <Header as="h4" color="olive">
-                  {`Welcome, ${userName}`}
-                </Header>
-              </Menu.Item>
-            )}
-          </Menu.Menu>
-        </Menu>
-      </Segment>
+      <div
+        style={{ height: 40, width: "100%", backgroundColor: "honeydew" }}
+      ></div>
 
       <S.Body>
         <Dashboard />

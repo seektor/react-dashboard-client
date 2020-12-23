@@ -11,24 +11,27 @@ import store from "./store/store";
 
 function App() {
   return (
-    <BrowserRouter>
-      <S.Container>
-        <Provider store={store}>
-          <AnimatePresence>
-            <Switch>
-              <Route path="/" exact component={MainScreen} />
+    <>
+      <S.GlobalStyle />
+      <BrowserRouter>
+        <S.Container>
+          <Provider store={store}>
+            <AnimatePresence>
+              <Switch>
+                <Route path="/" exact component={MainScreen} />
 
-              <Route path="/login" exact component={LoginScreen} />
-              <Route path="/register" exact component={RegisterScreen} />
+                <Route path="/login" exact component={LoginScreen} />
+                <Route path="/register" exact component={RegisterScreen} />
 
-              <Route render={() => <Redirect to="/" />} />
-            </Switch>
-          </AnimatePresence>
+                <Route render={() => <Redirect to="/" />} />
+              </Switch>
+            </AnimatePresence>
 
-          <ToastsManager />
-        </Provider>
-      </S.Container>
-    </BrowserRouter>
+            <ToastsManager />
+          </Provider>
+        </S.Container>
+      </BrowserRouter>
+    </>
   );
 }
 

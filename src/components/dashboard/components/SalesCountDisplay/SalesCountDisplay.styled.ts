@@ -1,8 +1,6 @@
 import styled from "styled-components/macro";
-import { DashboardTile } from "../../../../styles/common.styled";
 
 const Container = styled.div`
-  ${DashboardTile};
   display: flex;
   flex-direction: column;
 `;

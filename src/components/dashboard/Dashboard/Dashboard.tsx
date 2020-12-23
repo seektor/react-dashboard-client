@@ -2,8 +2,8 @@ import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
 import SalesCountDisplay from "../components/SalesCountDisplay/SalesCountDisplay";
 import SalesPerRegionBarChart from "../components/SalesPerRegionBarChart/SalesPerRegionBarChart";
 import SalesTable from "../components/SalesTable/SalesTable";
-import TodoList from "../components/TodoList/TodoList";
 import UsersCountDisplay from "../components/UsersCountDisplay/UsersCountDisplay";
+import S from "./Dashboard.styled";
 
 interface DashboardContextData {
   socket: SocketIOClient.Socket | null;
@@ -39,14 +39,15 @@ const Dashboard: FunctionComponent = () => {
           display: "grid",
           height: "100%",
           gridTemplateColumns: "repeat(20, 1fr)",
-          gridTemplateRows: "repeat(16, 1fr)",
+          gridTemplateRows: "repeat(20, 1fr)",
           gap: "8px",
           padding: "8px",
+          backgroundColor: "white",
         }}
       >
         <div
           style={{
-            gridColumn: "1 / span 2",
+            gridColumn: "1 / span 3",
             gridRow: "1 / span 2",
           }}
         >
@@ -54,7 +55,7 @@ const Dashboard: FunctionComponent = () => {
         </div>
         <div
           style={{
-            gridColumn: "3 / span 2",
+            gridColumn: "4 / span 3",
             gridRow: "1 / span 2",
           }}
         >
@@ -63,26 +64,27 @@ const Dashboard: FunctionComponent = () => {
 
         <div
           style={{
-            gridColumn: "1 / span 9",
-            gridRow: "3 / span 10",
+            gridColumn: "1 / span 8",
+            gridRow: "3 / span 18",
+
+            border: "1px solid #a2d2ff",
+            borderRadius: 4,
+            boxShadow: "2px 2px 4px 0 #a2d2ff",
+            padding: 8,
           }}
         >
           <SalesTable />
         </div>
 
-        <div
-          style={{
-            gridColumn: "10 / span 8",
-            gridRow: "3 / span 5",
-          }}
-        >
+        <S.SalesPerRegionBarChartTile>
           <SalesPerRegionBarChart />
-        </div>
-        <div
+        </S.SalesPerRegionBarChartTile>
+
+        {/*<div
           style={{
             backgroundColor: "blue",
             gridColumn: "10 / span 8",
-            gridRow: "8 / span 5",
+            gridRow: "13 / 8 20",
           }}
         >
           Chart 2
@@ -104,7 +106,7 @@ const Dashboard: FunctionComponent = () => {
           }}
         >
           {/* <Chat /> */}
-        </div>
+        {/* </div>  */}
       </div>
     </DashboardContext.Provider>
   );

@@ -2,6 +2,7 @@ import { ResponsiveBar } from "@nivo/bar";
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
 import { SaleDTO } from "../../../../types/dto/SaleDTO";
 import SalesTableApi from "../SalesTable/SalesTable.api";
+import S from "./SalesPerRegionBarChart.styled";
 
 const SalesPerRegionBarChart: FunctionComponent = () => {
   const [salesData, setSalesData] = useState<SaleDTO[]>([]);
@@ -20,24 +21,19 @@ const SalesPerRegionBarChart: FunctionComponent = () => {
     );
     const final = Object.entries(obj).map((entry) => ({
       region: entry[0],
-      totalProfit: entry[1],
+      totalProfit: +entry[1].toFixed(2),
     }));
     console.log(final);
     return final;
   }, [salesData]);
 
   return (
-    <div
-      style={{
-        overflow: "hidden",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "white",
-        padding: 8,
-      }}
-    >
-      <ResponsiveBar data={data} indexBy="region" keys={["totalProfit"]} />
-    </div>
+    <S.Container>
+      <h3>Total profit per region</h3>
+      <S.ChartContainer>
+        <ResponsiveBar data={data} indexBy="region" keys={["totalProfit"]} />
+      </S.ChartContainer>
+    </S.Container>
   );
 };
 

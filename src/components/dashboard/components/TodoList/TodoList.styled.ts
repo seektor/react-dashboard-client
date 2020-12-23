@@ -1,10 +1,7 @@
 import { Header } from "semantic-ui-react";
 import styled from "styled-components/macro";
-import { DashboardTile } from "../../../../styles/common.styled";
 
-const Container = styled.div`
-  ${DashboardTile};
-`;
+const Container = styled.div``;
 
 const HeaderContainer = styled.div`
   display: flex;
