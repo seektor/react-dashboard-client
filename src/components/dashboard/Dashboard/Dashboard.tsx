@@ -62,7 +62,6 @@ const Dashboard: FunctionComponent = () => {
 
         <div
           style={{
-            backgroundColor: "green",
             gridColumn: "1 / span 9",
             gridRow: "3 / span 10",
           }}

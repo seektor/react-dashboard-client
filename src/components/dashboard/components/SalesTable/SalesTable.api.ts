@@ -10,7 +10,6 @@ const fetchSales = async (): Promise<{
     data: SaleDTO[];
     pagination: PaginationData;
   }>("http://localhost:8000/api/sales?pageIndex=0&pageSize=10");
-  console.log(response.data);
   return response.data;
 };
 
