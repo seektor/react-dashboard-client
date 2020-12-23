@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useTable } from "react-table";
 import { SaleDTO } from "../../../../types/dto/SaleDTO";
-import SalesAPi from "./SalesTable.api";
+import SalesTableApi from "./SalesTable.api";
 import { SALES_TABLE_COLUMNS } from "./SalesTable.constants";
 
 const SalesTable: FunctionComponent = () => {
@@ -19,7 +19,7 @@ const SalesTable: FunctionComponent = () => {
   } = tableInstance;
 
   useEffect(() => {
-    SalesAPi.fetchSales().then((data) => setSalesData(data.data));
+    SalesTableApi.fetchSales().then((data) => setSalesData(data.data));
   }, []);
 
   return (

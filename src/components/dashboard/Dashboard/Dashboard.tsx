@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
 import SalesCountDisplay from "../components/SalesCountDisplay/SalesCountDisplay";
+import SalesPerRegionBarChart from "../components/SalesPerRegionBarChart/SalesPerRegionBarChart";
 import SalesTable from "../components/SalesTable/SalesTable";
 import TodoList from "../components/TodoList/TodoList";
 import UsersCountDisplay from "../components/UsersCountDisplay/UsersCountDisplay";
@@ -71,12 +72,11 @@ const Dashboard: FunctionComponent = () => {
 
         <div
           style={{
-            backgroundColor: "blue",
             gridColumn: "10 / span 8",
             gridRow: "3 / span 5",
           }}
         >
-          Chart 1
+          <SalesPerRegionBarChart />
         </div>
         <div
           style={{
