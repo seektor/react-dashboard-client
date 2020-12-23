@@ -1,6 +1,6 @@
 import { ToastType } from "./ToastType";
 
-export interface Toast {
+export interface ToastData {
   id: string;
   msg: string;
   type: ToastType;

@@ -1,8 +1,6 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
-import io from "socket.io-client";
-import { SocketEvents } from "../../../types/SocketEvents";
-import Chat from "../components/Chat/Chat";
 import SalesCountDisplay from "../components/SalesCountDisplay/SalesCountDisplay";
+import SalesTable from "../components/SalesTable/SalesTable";
 import TodoList from "../components/TodoList/TodoList";
 import UsersCountDisplay from "../components/UsersCountDisplay/UsersCountDisplay";
 
@@ -18,13 +16,12 @@ const Dashboard: FunctionComponent = () => {
   const [socket, setSocket] = useState<SocketIOClient.Socket | null>(null);
 
   useEffect(() => {
-    const socketClient = io("http://localhost:8000");
-    setSocket(socketClient);
-    socketClient.emit(SocketEvents.UserConnected, Date.now().toString());
-
-    return () => {
-      socketClient.disconnect();
-    };
+    // const socketClient = io("http://localhost:8000");
+    // setSocket(socketClient);
+    // socketClient.emit(SocketEvents.UserConnected, Date.now().toString());
+    // return () => {
+    //   socketClient.disconnect();
+    // };
   }, []);
 
   const dashboardContextValue = useMemo(
@@ -70,7 +67,7 @@ const Dashboard: FunctionComponent = () => {
             gridRow: "3 / span 10",
           }}
         >
-          Table
+          <SalesTable />
         </div>
 
         <div
@@ -107,7 +104,7 @@ const Dashboard: FunctionComponent = () => {
             gridRow: "13 / span 4",
           }}
         >
-          <Chat />
+          {/* <Chat /> */}
         </div>
       </div>
     </DashboardContext.Provider>

@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Toast } from "../../../types/Toast";
+import { ToastData } from "../../../types/ToastData";
 import { ToastType } from "../../../types/ToastType";
 
-type InitialState = Toast[];
+type InitialState = ToastData[];
 
 const initialState: InitialState = [];
 
@@ -15,7 +15,7 @@ const toastsSlice = createSlice({
       action: PayloadAction<{ id: string; msg: string; type: ToastType }>
     ) => {
       const { id, msg, type } = action.payload;
-      const toast: Toast = { id, msg, type };
+      const toast: ToastData = { id, msg, type };
       state.push(toast);
     },
     removeToast: (state, action: PayloadAction<string>) => {
