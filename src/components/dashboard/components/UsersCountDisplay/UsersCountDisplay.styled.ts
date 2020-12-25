@@ -1,4 +1,3 @@
-import { Icon } from "semantic-ui-react";
 import styled from "styled-components/macro";
 
 const Container = styled.div`
@@ -14,10 +13,10 @@ const ValueContainer = styled.div`
   padding-bottom: 15px;
 `;
 
-const StyledIcon = styled(Icon)`
-  color: #2185d0;
-  margin-right: 8px !important;
-`;
+// const StyledIcon = styled(Icon)`
+//   color: #2185d0;
+//   margin-right: 8px !important;
+// `;
 
 const Value = styled.span`
   font-size: 2rem;
@@ -25,6 +24,6 @@ const Value = styled.span`
   color: #2185d0;
 `;
 
-const S = { Container, ValueContainer, Value, StyledIcon };
+const S = { Container, ValueContainer, Value };
 
 export default S;

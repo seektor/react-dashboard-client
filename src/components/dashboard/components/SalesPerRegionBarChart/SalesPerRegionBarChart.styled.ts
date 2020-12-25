@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { COLOR } from "../../../../styles/color.styled";
 import CommonStyles from "../../../../styles/common.styled";
 
 const Container = styled.div`
@@ -7,11 +8,15 @@ const Container = styled.div`
   ${CommonStyles.DashboardTileCss};
 `;
 
+const Header = styled.h4`
+  color: ${COLOR.DarkCornflowerBlue};
+`;
+
 const ChartContainer = styled.div`
   min-height: 0;
   flex-grow: 1;
 `;
 
-const S = { Container, ChartContainer };
+const S = { Container, Header, ChartContainer };
 
 export default S;

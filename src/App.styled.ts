@@ -1,28 +1,53 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components/macro";
+import MontserratBold from "./assets/fonts/Montserrat-Bold.ttf";
+import MontserratRegular from "./assets/fonts/Montserrat-Regular.ttf";
+import { COLOR } from "./styles/color.styled";
 
 const GlobalStyle = createGlobalStyle`
-  body: {
-    line-height: 1.4;
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    src: local('Montserrat'), url(${MontserratRegular}) format('truetype');
   }
 
-  p: {
-    font-size: 1.25rem;
-    margin-bottom: 1.75rem;
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    src: local('Montserrat'), url(${MontserratBold}) format('truetype');
   }
 
-  h1: {
+  body {
+    font-family: 'Montserrat', sans-serif;
+    color: ${COLOR.Dark};
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
     font-size: 3rem;
-    margin-bottom: 3.5rem;
+    margin-top: 0rem;
+    margin-bottom: 1.5rem;
   }
 
-  h2: {
+  h2 {
     font-size: 2rem;
-    margin-bottom: 1.75rem;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
   }
 
-  h3: {
+  h3 {
     font-size: 1.5rem;
-    margin-bottom: 1.75rem;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
   }
 `;
 

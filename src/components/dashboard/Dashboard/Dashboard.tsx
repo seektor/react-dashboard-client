@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
 import SalesCountDisplay from "../components/SalesCountDisplay/SalesCountDisplay";
 import SalesPerRegionBarChart from "../components/SalesPerRegionBarChart/SalesPerRegionBarChart";
 import SalesTable from "../components/SalesTable/SalesTable";
-import UsersCountDisplay from "../components/UsersCountDisplay/UsersCountDisplay";
 import S from "./Dashboard.styled";
 
 interface DashboardContextData {
@@ -51,7 +50,7 @@ const Dashboard: FunctionComponent = () => {
             gridRow: "1 / span 2",
           }}
         >
-          <UsersCountDisplay />
+          {/* <UsersCountDisplay /> */}
         </div>
         <div
           style={{

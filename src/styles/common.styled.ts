@@ -6,9 +6,9 @@ const DashboardTileCss = css`
   height: 100%;
   background-color: ${COLOR.White};
   padding: 0.5rem 1rem 1rem 1rem;
-  border: 2px solid ${COLOR.Primary__light};
+  border: 2px solid ${COLOR.AliceBlue};
   border-radius: 4px;
-  box-shadow: 2px 2px 4px 0 ${COLOR.Primary__light};
+  box-shadow: 2px 2px 4px 0 ${COLOR.AliceBlue};
 `;
 
 const CommonStyles = { DashboardTileCss };

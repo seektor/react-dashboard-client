@@ -29,7 +29,7 @@ const SalesPerRegionBarChart: FunctionComponent = () => {
 
   return (
     <S.Container>
-      <h3>Total profit per region</h3>
+      <S.Header>Total profit per region</S.Header>
       <S.ChartContainer>
         <ResponsiveBar data={data} indexBy="region" keys={["totalProfit"]} />
       </S.ChartContainer>

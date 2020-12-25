@@ -3,10 +3,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import S from "./App.styled";
-import ToastsManager from "./components/shared/ToastsManager/ToastsManager";
-import LoginScreen from "./screens/Login/LoginScreen";
 import MainScreen from "./screens/Main/MainScreen";
-import RegisterScreen from "./screens/Register/RegisterScreen";
 import store from "./store/store";
 
 function App() {
@@ -20,14 +17,14 @@ function App() {
               <Switch>
                 <Route path="/" exact component={MainScreen} />
 
-                <Route path="/login" exact component={LoginScreen} />
-                <Route path="/register" exact component={RegisterScreen} />
+                {/* <Route path="/login" exact component={LoginScreen} />
+                <Route path="/register" exact component={RegisterScreen} /> */}
 
                 <Route render={() => <Redirect to="/" />} />
               </Switch>
             </AnimatePresence>
 
-            <ToastsManager />
+            {/* <ToastsManager /> */}
           </Provider>
         </S.Container>
       </BrowserRouter>
