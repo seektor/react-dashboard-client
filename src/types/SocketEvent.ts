@@ -1,4 +1,4 @@
-export enum SocketEvents {
+export enum SocketEvent {
   UserConnected = "USER CONNECTED",
   userDisconnected = "USER DISCONNECTED",
 }

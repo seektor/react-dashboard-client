@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
   h1 {
     font-size: 3rem;
     margin-top: 0rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   h2 {

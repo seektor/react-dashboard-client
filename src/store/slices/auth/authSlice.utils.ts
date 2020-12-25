@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Axios, { AxiosError, AxiosResponse } from "axios";
-import { BaseResponse } from "../../../types/BaseResponse";
 import {
   API_LOGIN_USER,
   API_REGISTER_USER,
-} from "../../../utils/api.constants";
+} from "../../../constants/api.constants";
+import { BaseResponse } from "../../../types/BaseResponse";
 
 export const registerUser = async (
   userName: string,
