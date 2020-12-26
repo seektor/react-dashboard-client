@@ -4,6 +4,7 @@ import { COLOR } from "./color.styled";
 const DashboardTileCss = css`
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   background-color: ${COLOR.White};
   padding: 0.5rem 1rem 1rem 1rem;
   border: 2px solid ${COLOR.AliceBlue};

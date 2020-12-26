@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
+import ItemTypePerUnitsSoldPieChart from "../components/ItemTypePerUnitsSoldPieChart/ItemTypePerUnitsSoldPieChart";
 import SalesCountDisplay from "../components/SalesCountDisplay/SalesCountDisplay";
 import SalesPerRegionBarChart from "../components/SalesPerRegionBarChart/SalesPerRegionBarChart";
 import SalesTable from "../components/SalesTable/SalesTable";
@@ -41,6 +42,7 @@ const Dashboard: FunctionComponent = () => {
           gridTemplateRows: "repeat(20, 1fr)",
           gap: "8px",
           padding: "8px",
+          boxSizing: "border-box",
           backgroundColor: "white",
         }}
       >
@@ -78,6 +80,10 @@ const Dashboard: FunctionComponent = () => {
         <S.SalesPerRegionBarChartTile>
           <SalesPerRegionBarChart />
         </S.SalesPerRegionBarChartTile>
+
+        <S.ItemTypePerUnitsSoldPieChartTile>
+          <ItemTypePerUnitsSoldPieChart />
+        </S.ItemTypePerUnitsSoldPieChartTile>
 
         {/*<div
           style={{

@@ -5,6 +5,11 @@ const SalesPerRegionBarChartTile = styled.div`
   grid-row: 3 / span 9;
 `;
 
-const S = { SalesPerRegionBarChartTile };
+const ItemTypePerUnitsSoldPieChartTile = styled.div`
+  grid-column: 9 / span 8;
+  grid-row: 12 / span 9;
+`;
+
+const S = { SalesPerRegionBarChartTile, ItemTypePerUnitsSoldPieChartTile };
 
 export default S;
