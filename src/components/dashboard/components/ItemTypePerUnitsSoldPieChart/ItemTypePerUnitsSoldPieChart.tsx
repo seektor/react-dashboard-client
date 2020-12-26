@@ -1,10 +1,9 @@
 import { ResponsivePie } from "@nivo/pie";
 import React, { FunctionComponent, useEffect, useState } from "react";
-import Loader from "react-loader-spinner";
-import { COLOR } from "../../../../styles/color.styled";
 import { AggregationData } from "../../../../types/AggregationData";
 import Alert from "../../../shared/Alert/Alert";
 import { AlertType } from "../../../shared/Alert/Alert.types";
+import Loader from "../../../shared/Loader/Loader";
 import ItemTypePerUnitsSoldPieChartApi from "./ItemTypePerUnitsSoldPieChart.api";
 import S from "./ItemTypePerUnitsSoldPieChart.styled";
 
@@ -31,10 +30,9 @@ const ItemTypePerUnitsSoldPieChart: FunctionComponent = () => {
   return (
     <S.Container>
       <S.Header>Item Type per Units Sold</S.Header>
-      <S.ChartContainer>
-        {loadingData && <Loader type="Oval" color={COLOR.DarkCornflowerBlue} />}
-
-        {!loadingData && (
+      {loadingData && <Loader />}
+      {!loadingData && (
+        <S.ChartContainer>
           <ResponsivePie
             data={chartData}
             id="aggregator"
@@ -45,12 +43,11 @@ const ItemTypePerUnitsSoldPieChart: FunctionComponent = () => {
             padAngle={1}
             cornerRadius={3}
           />
-        )}
-
-        {errorMessage && (
-          <Alert type={AlertType.Error} title="Error" content={errorMessage} />
-        )}
-      </S.ChartContainer>
+        </S.ChartContainer>
+      )}
+      {errorMessage && (
+        <Alert type={AlertType.Error} title="Error" content={errorMessage} />
+      )}
     </S.Container>
   );
 };

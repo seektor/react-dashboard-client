@@ -1,7 +1,11 @@
 import { Column } from "react-table";
+import { DataWithRowNumber } from "../../../../types/DataWithRowNumber";
 import { SaleDTO } from "../../../../types/dto/SaleDTO";
 
-export const SALES_TABLE_COLUMNS: Column<SaleDTO>[] = [
+export const SALES_PAGE_SIZE = 50;
+
+export const SALES_TABLE_COLUMNS: Column<DataWithRowNumber<SaleDTO>>[] = [
+  { Header: "Lp", accessor: "rowNumber" },
   { Header: "Id", accessor: "id" },
   { Header: "Region", accessor: "region" },
   { Header: "Country", accessor: "country" },

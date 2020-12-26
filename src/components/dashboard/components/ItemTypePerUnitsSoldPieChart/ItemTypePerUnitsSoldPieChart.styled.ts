@@ -16,8 +16,6 @@ const ChartContainer = styled.div`
   display: flex;
   min-height: 0;
   flex-grow: 1;
-  justify-content: center;
-  align-items: center;
 `;
 
 const S = { Container, Header, ChartContainer };

@@ -1,11 +1,10 @@
 import { ResponsiveBar } from "@nivo/bar";
 import React, { FunctionComponent, useEffect, useState } from "react";
-import Loader from "react-loader-spinner";
-import { COLOR } from "../../../../styles/color.styled";
 import { AggregationData } from "../../../../types/AggregationData";
 import { generateColor } from "../../../../utils/color.utils";
 import Alert from "../../../shared/Alert/Alert";
 import { AlertType } from "../../../shared/Alert/Alert.types";
+import Loader from "../../../shared/Loader/Loader";
 import SalesPerRegionBarChartApi from "./SalesPerRegionBarChart.api";
 import S from "./SalesPerRegionBarChart.styled";
 
@@ -32,10 +31,9 @@ const SalesPerRegionBarChart: FunctionComponent = () => {
   return (
     <S.Container>
       <S.Header>Total Profit per Region</S.Header>
-      <S.ChartContainer>
-        {loadingData && <Loader type="Oval" color={COLOR.DarkCornflowerBlue} />}
-
-        {!loadingData && (
+      {loadingData && <Loader />}
+      {!loadingData && (
+        <S.ChartContainer>
           <ResponsiveBar
             data={chartData}
             indexBy="aggregator"
@@ -60,12 +58,12 @@ const SalesPerRegionBarChart: FunctionComponent = () => {
               },
             }}
           />
-        )}
+        </S.ChartContainer>
+      )}
 
-        {errorMessage && (
-          <Alert type={AlertType.Error} title="Error" content={errorMessage} />
-        )}
-      </S.ChartContainer>
+      {errorMessage && (
+        <Alert type={AlertType.Error} title="Error" content={errorMessage} />
+      )}
     </S.Container>
   );
 };

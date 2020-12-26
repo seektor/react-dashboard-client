@@ -63,19 +63,9 @@ const Dashboard: FunctionComponent = () => {
           <SalesCountDisplay />
         </div>
 
-        <div
-          style={{
-            gridColumn: "1 / span 8",
-            gridRow: "3 / span 18",
-
-            border: "1px solid #a2d2ff",
-            borderRadius: 4,
-            boxShadow: "2px 2px 4px 0 #a2d2ff",
-            padding: 8,
-          }}
-        >
+        <S.SalesTable>
           <SalesTable />
-        </div>
+        </S.SalesTable>
 
         <S.SalesPerRegionBarChartTile>
           <SalesPerRegionBarChart />
