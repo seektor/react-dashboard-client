@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     color: ${COLOR.Dark};
   }
 
+  input, textarea, button {
+    font-family: 'Montserrat', sans-serif;
+  }
+
   p {
     font-size: 1rem;
     margin-bottom: 1rem;
@@ -46,6 +50,12 @@ const GlobalStyle = createGlobalStyle`
 
   h4 {
     font-size: 1.25rem;
+    margin-top: 0rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h5 {
+    font-size: 1rem;
     margin-top: 0rem;
     margin-bottom: 0.5rem;
   }

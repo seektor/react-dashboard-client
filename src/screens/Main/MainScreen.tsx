@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Dashboard from "../../components/dashboard/Dashboard/Dashboard";
@@ -15,15 +15,16 @@ import S from "./MainScreen.styled";
 const MainScreen: FunctionComponent = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
-  const userName = useSelector((state: RootState) => state.authSlice.user);
-  const [selectedItem, setSelectedItem] = useState<string>("dashboard");
+  const userName = useSelector(
+    (state: RootState) => state.authSlice.user?.userName
+  );
 
   return (
     <S.Container>
       <S.Header>
         <S.HeaderTitle>React Dashboard</S.HeaderTitle>
         <S.HeaderUserContainer>
-          <S.HeaderUserName>user</S.HeaderUserName>
+          <S.HeaderUserName>{userName}</S.HeaderUserName>
           <Button
             buttonType={ButtonType.Secondary}
             buttonSize={ButtonSize.Small}

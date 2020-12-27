@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import Axios, { AxiosResponse } from "axios";
 import { History } from "history";
 import { API_LOGIN, API_LOGOUT } from "../../../constants/api.constants";
+import { LOCAL_STORAGE_TOKEN_KEY } from "./authSlice.constants";
 
 type LoginFullfilledResponse = {
   userName: string;
@@ -27,15 +28,13 @@ export const loginUser = createAsyncThunk<
         ...payload,
       }
     );
+    localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, res.data.accessToken);
     return res.data;
   } catch (error) {
     return rejectWithValue(error.response?.data.message || error.message);
   }
 });
 
-type LogoutFullfilledResponse = {
-  history: History;
-};
 type LogoutPayload = {
   history: History;
 };
@@ -44,13 +43,14 @@ type LogoutRejectedResponse = {
 };
 
 export const logoutUser = createAsyncThunk<
-  LogoutFullfilledResponse,
+  undefined,
   LogoutPayload,
   { rejectValue: LogoutRejectedResponse }
 >("auth/logoutUser", async (payload, { rejectWithValue }) => {
   try {
     await Axios.post(API_LOGOUT);
-    return payload;
+    payload.history.push("/login", { fromLogout: true });
+    localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
   } catch (error) {
     return rejectWithValue(error.response?.data.message || error.message);
   }

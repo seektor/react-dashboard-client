@@ -1,24 +1,44 @@
-// import { Header } from "semantic-ui-react";
-// import styled from "styled-components/macro";
+import styled from "styled-components/macro";
+import { COLOR } from "../../../../styles/color.styled";
+import CommonStyles from "../../../../styles/common.styled";
 
-// const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  ${CommonStyles.DashboardTileCss};
+`;
 
-// const HeaderContainer = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   margin-bottom: 16px;
-// `;
+const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+`;
 
-// const StyledHeader = styled(Header)`
-//   margin: 0;
-// `;
+const HeaderTitle = styled.h4`
+  color: ${COLOR.DarkCornflowerBlue};
+  margin-bottom: 0;
+`;
 
-// const TodoList = styled.div`
-//   padding: 0 8px;
-// `;
+const TodoList = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.75rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+`;
 
-// const S = { Container, HeaderContainer, StyledHeader, TodoList };
+const TodoItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: ${COLOR.GoldCrayole};
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 4px 0 ${COLOR.WildBlueYonder};
+  padding: 0.5rem 0.5rem;
+  margin-bottom: 1rem;
+`;
 
-// export default S;
-export {};
+const S = { Container, HeaderContainer, HeaderTitle, TodoList, TodoItem };
+
+export default S;

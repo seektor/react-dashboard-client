@@ -14,11 +14,11 @@ const MotionDivContainer = styled(motion.div)`
   }
 
   @media (min-width: 992px) {
-    width: 850px;
+    width: 750px;
   }
 
   @media (min-width: 1200px) {
-    width: 900px;
+    width: 800px;
   }
 `;
 

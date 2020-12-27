@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import Alert from "../../components/shared/Alert/Alert";
 import { AlertType } from "../../components/shared/Alert/Alert.types";
 import Button from "../../components/shared/Button/Button";
@@ -11,17 +11,19 @@ import S from "./LoginScreen.styled";
 
 interface LocationState {
   userName?: string;
+  fromLogout?: boolean;
 }
 
 const LoginScreen: FunctionComponent = () => {
   const location = useLocation<LocationState | undefined>();
+  const history = useHistory();
 
   const [userName, setUserName] = useState<string>(
     location.state?.userName || ""
   );
   const [password, setPassword] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
-  const { logging, errorMsg: loginError } = useSelector(
+  const { logging, errorMsg: loginError, user } = useSelector(
     (state: RootState) => state.authSlice
   );
 
@@ -40,6 +42,16 @@ const LoginScreen: FunctionComponent = () => {
     setErrorMsg(loginError || "");
   }, [loginError]);
 
+  useEffect(() => {
+    if (location.state?.fromLogout) {
+      return;
+    }
+    if (user) {
+      history.push("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <S.ContainerMotion
       initial={{ opacity: 0 }}
@@ -51,11 +63,9 @@ const LoginScreen: FunctionComponent = () => {
 
         <S.StyledForm onSubmit={login}>
           {errorMsg && (
-            <Alert
-              type={AlertType.Error}
-              title="Login error"
-              content={errorMsg}
-            />
+            <Alert type={AlertType.Error} title="Login error">
+              {errorMsg}
+            </Alert>
           )}
           <TextInput placeholder="User Name" onChange={setUserName} />
           <TextInput placeholder="Password" onChange={setPassword} />

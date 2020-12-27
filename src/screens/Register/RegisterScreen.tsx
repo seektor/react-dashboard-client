@@ -1,18 +1,26 @@
 import Axios from "axios";
-import React, { FunctionComponent, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import Alert from "../../components/shared/Alert/Alert";
 import { AlertType } from "../../components/shared/Alert/Alert.types";
 import Button from "../../components/shared/Button/Button";
 import TextInput from "../../components/shared/TextInput/TextInput";
 import { API_LOGIN, API_REGISTER } from "../../constants/api.constants";
+import { RootState } from "../../store/rootReducer";
 import { showToast } from "../../store/slices/toasts/toastsSlice";
 import { useAppDispatch } from "../../store/store";
 import S from "./RegisterScreen.styled";
 
+interface LocationState {
+  fromLogout?: boolean;
+}
+
 const RegisterScreen: FunctionComponent = () => {
+  const location = useLocation<LocationState | undefined>();
   const history = useHistory();
   const dispatch = useAppDispatch();
+  const { user } = useSelector((state: RootState) => state.authSlice);
 
   const [userName, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -44,6 +52,16 @@ const RegisterScreen: FunctionComponent = () => {
     }
   };
 
+  useEffect(() => {
+    if (location.state?.fromLogout) {
+      return;
+    }
+    if (user) {
+      history.push("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <S.ContainerMotion
       initial={{ opacity: 0 }}
@@ -55,11 +73,9 @@ const RegisterScreen: FunctionComponent = () => {
 
         <S.StyledForm onSubmit={register}>
           {errorMsg && (
-            <Alert
-              type={AlertType.Error}
-              title="Register error"
-              content={errorMsg}
-            />
+            <Alert type={AlertType.Error} title="Register error">
+              {errorMsg}
+            </Alert>
           )}
           <TextInput placeholder="User Name" onChange={setUserName} />
           <TextInput placeholder="Password" onChange={setPassword} />

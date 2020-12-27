@@ -63,7 +63,9 @@ const SalesPerRegionBarChart: FunctionComponent = () => {
       )}
 
       {errorMessage && (
-        <Alert type={AlertType.Error} title="Error" content={errorMessage} />
+        <Alert type={AlertType.Error} title="Error">
+          {errorMessage}
+        </Alert>
       )}
     </S.Container>
   );

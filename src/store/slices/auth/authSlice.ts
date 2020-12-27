@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LOCAL_STORAGE_TOKEN_KEY } from "./authSlice.constants";
 import { loginUser, logoutUser } from "./authSlice.utils";
 
 interface InitialState {
@@ -31,7 +30,6 @@ const authSlice = createSlice({
       state.user = null;
     });
     builder.addCase(loginUser.fulfilled, (state, action) => {
-      localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, action.payload.accessToken);
       state.errorMsg = undefined;
       state.logging = false;
       state.user = {
@@ -46,11 +44,9 @@ const authSlice = createSlice({
     });
 
     builder.addCase(logoutUser.fulfilled, (state, action) => {
-      localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
       state.errorMsg = undefined;
       state.logging = false;
       state.user = null;
-      action.payload.history.push("/login");
     });
   },
 });

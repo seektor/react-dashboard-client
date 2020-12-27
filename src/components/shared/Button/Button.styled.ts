@@ -3,15 +3,15 @@ import { COLOR } from "../../../styles/color.styled";
 import { ButtonSize, ButtonType } from "./Button.types";
 
 const PRIMARY_SET = {
-  backgroundColor: COLOR.DodgerBlue,
+  backgroundColor: COLOR.DarkCornflowerBlue,
   fontColor: COLOR.White,
-  border: `0.0625rem solid ${COLOR.DodgerBlue}`,
+  border: `0.0625rem solid ${COLOR.DarkCornflowerBlue}`,
 };
 
 const SECONDARY_SET = {
   backgroundColor: COLOR.White,
-  fontColor: COLOR.DodgerBlue,
-  border: `0.0625rem solid ${COLOR.DodgerBlue}`,
+  fontColor: COLOR.DarkCornflowerBlue,
+  border: `0.0625rem solid ${COLOR.DarkCornflowerBlue}`,
 };
 
 const CLEAR_SET = {
@@ -49,6 +49,7 @@ interface ButtonProps {
 
 const StyledButton = styled.button`
   cursor: pointer;
+  font-weight: bold;
   border-radius: 0.125rem;
   ${({ buttonType }: ButtonProps) => {
     const colorsSet = getColorsSet(buttonType);

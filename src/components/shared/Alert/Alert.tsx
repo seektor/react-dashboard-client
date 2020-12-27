@@ -5,14 +5,13 @@ import { AlertType } from "./Alert.types";
 interface AlertProps {
   type: AlertType;
   title?: string;
-  content: string;
 }
 
-const Alert: FunctionComponent<AlertProps> = ({ type, title, content }) => {
+const Alert: FunctionComponent<AlertProps> = ({ type, title, children }) => {
   return (
     <S.Container type={type}>
       {title && <h4>{title}</h4>}
-      <span>{content}</span>
+      <span>{children}</span>
     </S.Container>
   );
 };

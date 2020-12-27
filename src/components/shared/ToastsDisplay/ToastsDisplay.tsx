@@ -24,10 +24,11 @@ const ToastsManager: FunctionComponent = () => {
               exit={{ opacity: 0, y: -50, scale: 0.5 }}
             >
               <Alert
-                content={toast.msg}
                 title={toast.type === AlertType.Success ? "Success" : "Error"}
                 type={toast.type}
-              />
+              >
+                {toast.msg}
+              </Alert>
             </motion.div>
           ))}
         </AnimatePresence>

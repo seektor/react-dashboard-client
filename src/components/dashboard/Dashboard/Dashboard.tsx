@@ -1,8 +1,10 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
+import Chat from "../components/Chat/Chat";
 import ItemTypePerUnitsSoldPieChart from "../components/ItemTypePerUnitsSoldPieChart/ItemTypePerUnitsSoldPieChart";
 import SalesCountDisplay from "../components/SalesCountDisplay/SalesCountDisplay";
 import SalesPerRegionBarChart from "../components/SalesPerRegionBarChart/SalesPerRegionBarChart";
 import SalesTable from "../components/SalesTable/SalesTable";
+import TodoList from "../components/TodoList/TodoList";
 import S from "./Dashboard.styled";
 
 interface DashboardContextData {
@@ -34,18 +36,7 @@ const Dashboard: FunctionComponent = () => {
 
   return (
     <DashboardContext.Provider value={dashboardContextValue}>
-      <div
-        style={{
-          display: "grid",
-          height: "100%",
-          gridTemplateColumns: "repeat(20, 1fr)",
-          gridTemplateRows: "repeat(20, 1fr)",
-          gap: "8px",
-          padding: "8px",
-          boxSizing: "border-box",
-          backgroundColor: "white",
-        }}
-      >
+      <S.Grid>
         <div
           style={{
             gridColumn: "1 / span 3",
@@ -75,34 +66,14 @@ const Dashboard: FunctionComponent = () => {
           <ItemTypePerUnitsSoldPieChart />
         </S.ItemTypePerUnitsSoldPieChartTile>
 
-        {/*<div
-          style={{
-            backgroundColor: "blue",
-            gridColumn: "10 / span 8",
-            gridRow: "13 / 8 20",
-          }}
-        >
-          Chart 2
-        </div>
-
-        <div
-          style={{
-            gridColumn: "18 / span 3",
-            gridRow: "1 / span 16",
-          }}
-        >
+        <S.TodoListTile>
           <TodoList />
-        </div>
+        </S.TodoListTile>
 
-        <div
-          style={{
-            gridColumn: "1 / span 17",
-            gridRow: "13 / span 4",
-          }}
-        >
-          {/* <Chat /> */}
-        {/* </div>  */}
-      </div>
+        <S.ChatTile>
+          <Chat />
+        </S.ChatTile>
+      </S.Grid>
     </DashboardContext.Provider>
   );
 };

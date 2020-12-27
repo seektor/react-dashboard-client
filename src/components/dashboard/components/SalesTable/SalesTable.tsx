@@ -81,7 +81,9 @@ const SalesTable: FunctionComponent = () => {
       <S.Header>Sales</S.Header>
       <S.ContainerBody>
         {errorMessage && (
-          <Alert type={AlertType.Error} title="Error" content={errorMessage} />
+          <Alert type={AlertType.Error} title="Error">
+            {errorMessage}
+          </Alert>
         )}
         {!errorMessage && (
           <>
