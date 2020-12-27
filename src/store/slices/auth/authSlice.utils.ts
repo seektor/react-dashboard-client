@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Axios, { AxiosResponse } from "axios";
+import { History } from "history";
 import { API_LOGIN, API_LOGOUT } from "../../../constants/api.constants";
 
 type LoginFullfilledResponse = {
@@ -32,17 +33,24 @@ export const loginUser = createAsyncThunk<
   }
 });
 
+type LogoutFullfilledResponse = {
+  history: History;
+};
+type LogoutPayload = {
+  history: History;
+};
 type LogoutRejectedResponse = {
   error: string;
 };
 
 export const logoutUser = createAsyncThunk<
-  undefined,
-  undefined,
+  LogoutFullfilledResponse,
+  LogoutPayload,
   { rejectValue: LogoutRejectedResponse }
 >("auth/logoutUser", async (payload, { rejectWithValue }) => {
   try {
     await Axios.post(API_LOGOUT);
+    return payload;
   } catch (error) {
     return rejectWithValue(error.response?.data.message || error.message);
   }
