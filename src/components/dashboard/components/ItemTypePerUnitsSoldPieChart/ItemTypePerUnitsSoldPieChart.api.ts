@@ -6,11 +6,10 @@ const fetchItemTypePerUnitsSoldData = (): Promise<
   AxiosResponse<{
     data: AggregationData[];
   }>
-> => {
-  return Axios.get<{
+> =>
+  Axios.get<{
     data: AggregationData[];
   }>(`${API_SALES_AGGREGATES}?value=units_sold&group_by=item_type`);
-};
 
 const ItemTypePerUnitsSoldPieChartApi = { fetchItemTypePerUnitsSoldData };
 

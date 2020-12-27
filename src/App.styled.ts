@@ -41,13 +41,13 @@ const GlobalStyle = createGlobalStyle`
   h3 {
     font-size: 1.5rem;
     margin-top: 0rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   h4 {
     font-size: 1.25rem;
     margin-top: 0rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 `;
 

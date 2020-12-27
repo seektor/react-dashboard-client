@@ -3,13 +3,13 @@ import { COLOR } from "../../../styles/color.styled";
 import { AlertType } from "./Alert.types";
 
 const ERROR_SET = {
-  backgroundColor: COLOR.PalePink,
-  fontColor: COLOR.BlackBean,
+  backgroundColor: COLOR.Coquelicot,
+  fontColor: COLOR.White,
 };
 
 const SUCCESS_SET = {
-  backgroundColor: COLOR.PithaloGreen,
-  fontColor: COLOR.Honeydew,
+  backgroundColor: COLOR.Emerald,
+  fontColor: COLOR.White,
 };
 
 const getColorsSet = (type: AlertType) =>

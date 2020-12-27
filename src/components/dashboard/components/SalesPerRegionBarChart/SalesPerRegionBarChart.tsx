@@ -22,8 +22,9 @@ const SalesPerRegionBarChart: FunctionComponent = () => {
         setChartData(response.data.data);
       } catch (error) {
         setErrorMessage(error.response?.data.message || error.message);
+      } finally {
+        setLoadingData(false);
       }
-      setLoadingData(false);
     };
     loadData();
   }, []);
@@ -32,7 +33,7 @@ const SalesPerRegionBarChart: FunctionComponent = () => {
     <S.Container>
       <S.Header>Total Profit per Region</S.Header>
       {loadingData && <Loader />}
-      {!loadingData && (
+      {!loadingData && !errorMessage && (
         <S.ChartContainer>
           <ResponsiveBar
             data={chartData}

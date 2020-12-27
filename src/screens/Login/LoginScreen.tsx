@@ -1,104 +1,77 @@
-// import { motion } from "framer-motion";
-// import React, { FunctionComponent, useEffect, useState } from "react";
-// import { useSelector } from "react-redux";
-// import { Link, useLocation } from "react-router-dom";
-// import {
-//   Button,
-//   Form,
-//   Grid,
-//   Header,
-//   Message,
-//   Segment,
-// } from "semantic-ui-react";
-// import { RootState } from "../../store/rootReducer";
-// import { loginUser } from "../../store/slices/auth/authSlice.utils";
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import Alert from "../../components/shared/Alert/Alert";
+import { AlertType } from "../../components/shared/Alert/Alert.types";
+import Button from "../../components/shared/Button/Button";
+import TextInput from "../../components/shared/TextInput/TextInput";
+import { RootState } from "../../store/rootReducer";
+import { loginUser } from "../../store/slices/auth/authSlice.utils";
+import S from "./LoginScreen.styled";
 
-// interface LocationState {
-//   userName?: string;
-// }
+interface LocationState {
+  userName?: string;
+}
 
-// const LoginScreen: FunctionComponent = () => {
-//   const location = useLocation<LocationState | undefined>();
+const LoginScreen: FunctionComponent = () => {
+  const location = useLocation<LocationState | undefined>();
 
-//   const [userName, setUserName] = useState<string>(
-//     location.state?.userName || ""
-//   );
-//   const [password, setPassword] = useState<string>("");
-//   const [errorMsg, setErrorMsg] = useState<string>("");
-//   const loginError = useSelector(
-//     (state: RootState) => state.authSlice.loginErrorMsg
-//   );
+  const [userName, setUserName] = useState<string>(
+    location.state?.userName || ""
+  );
+  const [password, setPassword] = useState<string>("");
+  const [errorMsg, setErrorMsg] = useState<string>("");
+  const { logging, errorMsg: loginError } = useSelector(
+    (state: RootState) => state.authSlice
+  );
 
-//   const [logging, setLogging] = useState<boolean>(false);
+  const login = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const hasData = userName && password;
+    if (!hasData) {
+      setErrorMsg("Please enter all the fields.");
+    } else {
+      setErrorMsg("");
+      loginUser({ userName, password });
+    }
+  };
 
-//   const login = (event: React.FormEvent<HTMLFormElement>) => {
-//     event.preventDefault();
-//     const hasData = userName && password;
-//     if (!hasData) {
-//       setErrorMsg("Please enter all the fields.");
-//     } else {
-//       setErrorMsg("");
-//       loginUser({ userName, password });
-//     }
-//   };
+  useEffect(() => {
+    setErrorMsg(loginError || "");
+  }, [loginError]);
 
-//   useEffect(() => {
-//     setErrorMsg(loginError || "");
-//   }, [loginError]);
+  return (
+    <S.ContainerMotion
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <S.FormContainer>
+        <S.FormHeader>Login</S.FormHeader>
 
-//   return (
-//     <motion.div
-//       initial={{ opacity: 0 }}
-//       animate={{ opacity: 1 }}
-//       exit={{ opacity: 0 }}
-//     >
-//       <Grid
-//         textAlign="center"
-//         style={{ height: "100vh" }}
-//         verticalAlign="middle"
-//       >
-//         <Grid.Column style={{ maxWidth: 450 }}>
-//           <Header as="h2" color="blue" textAlign="center">
-//             Log-in to your account
-//           </Header>
+        <S.StyledForm onSubmit={login}>
+          {errorMsg && (
+            <Alert
+              type={AlertType.Error}
+              title="Login error"
+              content={errorMsg}
+            />
+          )}
+          <TextInput placeholder="User Name" onChange={setUserName} />
+          <TextInput placeholder="Password" onChange={setPassword} />
+          <Button type="submit" disabled={logging}>
+            Login
+          </Button>
+        </S.StyledForm>
+      </S.FormContainer>
 
-//           <Form size="large" onSubmit={login}>
-//             <Segment stacked>
-//               {errorMsg && (
-//                 <Message negative>
-//                   <p>{errorMsg}</p>
-//                 </Message>
-//               )}
+      <S.BottomInfoContainer>
+        <span>
+          <strong>New User?</strong> <Link to="/register">Register</Link>
+        </span>
+      </S.BottomInfoContainer>
+    </S.ContainerMotion>
+  );
+};
 
-//               <Form.Input
-//                 fluid
-//                 icon="user"
-//                 iconPosition="left"
-//                 placeholder="User name"
-//                 onChange={(e) => setUserName(e.target.value)}
-//               />
-//               <Form.Input
-//                 fluid
-//                 icon="lock"
-//                 iconPosition="left"
-//                 placeholder="Password"
-//                 type="password"
-//                 onChange={(e) => setPassword(e.target.value)}
-//               />
-
-//               <Button color="blue" fluid size="large" disabled={logging}>
-//                 Login
-//               </Button>
-//             </Segment>
-//           </Form>
-//           <Message>
-//             New to us? <Link to="/register">Register</Link>
-//           </Message>
-//         </Grid.Column>
-//       </Grid>
-//     </motion.div>
-//   );
-// };
-
-// export default LoginScreen;
-export {};
+export default LoginScreen;

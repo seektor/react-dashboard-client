@@ -21,8 +21,9 @@ const ItemTypePerUnitsSoldPieChart: FunctionComponent = () => {
         setChartData(response.data.data);
       } catch (error) {
         setErrorMessage(error.response?.data.message || error.message);
+      } finally {
+        setLoadingData(false);
       }
-      setLoadingData(false);
     };
     loadData();
   }, []);
@@ -31,7 +32,7 @@ const ItemTypePerUnitsSoldPieChart: FunctionComponent = () => {
     <S.Container>
       <S.Header>Item Type per Units Sold</S.Header>
       {loadingData && <Loader />}
-      {!loadingData && (
+      {!loadingData && !errorMessage && (
         <S.ChartContainer>
           <ResponsivePie
             data={chartData}

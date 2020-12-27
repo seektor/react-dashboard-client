@@ -6,11 +6,10 @@ const fetchTotalProfitPerRegionData = (): Promise<
   AxiosResponse<{
     data: AggregationData[];
   }>
-> => {
-  return Axios.get<{
+> =>
+  Axios.get<{
     data: AggregationData[];
   }>(`${API_SALES_AGGREGATES}?group_by=region&value=total_profit`);
-};
 
 const SalesPerRegionBarChartApi = { fetchTotalProfitPerRegionData };
 

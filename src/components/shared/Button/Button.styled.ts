@@ -4,7 +4,7 @@ import { ButtonSize, ButtonType } from "./Button.types";
 
 const PRIMARY_SET = {
   backgroundColor: COLOR.DodgerBlue,
-  fontColor: COLOR.BlackBean,
+  fontColor: COLOR.White,
   border: `0.0625rem solid ${COLOR.DodgerBlue}`,
 };
 
@@ -15,7 +15,7 @@ const SECONDARY_SET = {
 };
 
 const NORMAL_SET = {
-  padding: "0.25rem 0.5rem",
+  padding: "0.5rem 1rem",
 };
 
 const SMALL_SET = {

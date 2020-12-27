@@ -9,10 +9,8 @@ export enum COLOR {
   DarkCornflowerBlue = "#344679",
 
   // Errors
-  BlackBean = "#43130f",
-  PalePink = "#fddcda",
+  Coquelicot = "#f9461c",
 
   // Success
-  Honeydew = "#dceddd",
-  PithaloGreen = "#152e16",
+  Emerald = "#43d787",
 }

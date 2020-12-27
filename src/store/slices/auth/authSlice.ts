@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { LOCAL_STORAGE_TOKEN_KEY } from "./authSlice.constants";
 import { loginUser } from "./authSlice.utils";
 
 interface InitialState {
@@ -6,7 +7,7 @@ interface InitialState {
     userName: string;
     token: string;
   } | null;
-  loginErrorMsg?: string;
+  errorMsg?: string;
   logging: boolean;
 }
 
@@ -15,25 +16,37 @@ const initialState: InitialState = { user: null, logging: false };
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    updateUserData: (
+      state,
+      action: PayloadAction<{ user: { userName: string; token: string } }>
+    ) => {
+      const { user } = action.payload;
+      state.user = user;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(loginUser.pending, (state, action) => {
       state.logging = true;
+      state.user = null;
     });
     builder.addCase(loginUser.fulfilled, (state, action) => {
-      state.loginErrorMsg = undefined;
+      localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, action.payload.accessToken);
+      state.errorMsg = undefined;
       state.logging = false;
       state.user = {
-        token: action.payload.accessToken!,
-        userName: action.payload.userName!,
+        token: action.payload.accessToken,
+        userName: action.payload.userName,
       };
     });
     builder.addCase(loginUser.rejected, (state, action) => {
       state.logging = false;
-      state.loginErrorMsg = action.payload!.loginError;
+      state.errorMsg = action.payload!.error;
       state.user = null;
     });
   },
 });
+
+export const { updateUserData } = authSlice.actions;
 
 export default authSlice.reducer;

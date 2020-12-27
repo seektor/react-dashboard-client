@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ToastData } from "../../../types/ToastData";
-import { ToastType } from "../../../types/ToastType";
+import { AlertType } from "../../../components/shared/Alert/Alert.types";
+import { ToastData } from "../../../components/shared/ToastsDisplay/ToastsDisplay.types";
 
 type InitialState = ToastData[];
 
@@ -12,7 +12,7 @@ const toastsSlice = createSlice({
   reducers: {
     addToast: (
       state,
-      action: PayloadAction<{ id: string; msg: string; type: ToastType }>
+      action: PayloadAction<{ id: string; msg: string; type: AlertType }>
     ) => {
       const { id, msg, type } = action.payload;
       const toast: ToastData = { id, msg, type };
@@ -29,7 +29,7 @@ const { addToast, removeToast } = toastsSlice.actions;
 
 export const showToast = createAsyncThunk(
   "toasts/showToast",
-  async (payload: { msg: string; type: ToastType }, thunkAPI) => {
+  async (payload: { msg: string; type: AlertType }, thunkAPI) => {
     const id = Date.now().toString();
     const { msg, type } = payload;
     thunkAPI.dispatch(addToast({ id, msg, type }));
