@@ -12,7 +12,17 @@ const Grid = styled.div`
   background-color: ${COLOR.AliceBlue};
 `;
 
-const SalesTable = styled.div`
+const UsersCountDisplayTile = styled.div`
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 2;
+`;
+
+const SalesCountDisplayTile = styled.div`
+  grid-column: 4 / span 3;
+  grid-row: 1 / span 2;
+`;
+
+const SalesTableTile = styled.div`
   grid-column: 1 / span 8;
   grid-row: 3 / span 18;
 `;
@@ -39,7 +49,9 @@ const ChatTile = styled.div`
 
 const S = {
   Grid,
-  SalesTable,
+  UsersCountDisplayTile,
+  SalesCountDisplayTile,
+  SalesTableTile,
   SalesPerRegionBarChartTile,
   ItemTypePerUnitsSoldPieChartTile,
   TodoListTile,

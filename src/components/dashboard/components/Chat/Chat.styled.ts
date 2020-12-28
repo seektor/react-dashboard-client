@@ -12,49 +12,46 @@ const HeaderTitle = styled.h4`
   color: ${COLOR.DarkCornflowerBlue};
 `;
 
-// const Container = styled.div`
-//   display: flex;
-//   flex-direction: column;
-// `;
+const MessagesList = styled.div`
+  flex-grow: 1;
+  overflow: auto;
+  margin-bottom: 0.5rem;
+`;
 
-// const MsgList = styled.div`
-//   flex-grow: 1;
-//   overflow: auto;
-//   margin-bottom: 8px;
-// `;
+const Message = styled.span`
+  display: block;
+  margin-bottom: 0.5rem;
+`;
 
-// const ServerMsg = styled.span`
-//   display: block;
-//   font-weight: bold;
-//   color: #27187e;
-//   margin-bottom: 8px;
-// `;
+interface MessageAuthorProps {
+  self: boolean;
+}
 
-// const MsgAuthor = styled.span`
-//   font-weight: bold;
-// `;
+const MessageAuthor = styled.span`
+  font-weight: bold;
+  color: ${({ self }: MessageAuthorProps) =>
+    self ? COLOR.Emerald : COLOR.DarkCornflowerBlue};
+`;
 
-// const SelfMsgAuthor = styled(MsgAuthor)`
-//   color: #2185d0;
-// `;
+const MessageContent = styled.span`
+  color: ${COLOR.Dark};
+`;
 
-// const Msg = styled.span`
-//   margin-bottom: 8px;
-// `;
-
-// const InputRow = styled.div`
-//   display: flex;
-// `;
-
-// const StyledInput = styled(Input)`
-//   flex-grow: 1;
-//   margin-right: 8px;
-// `;
+const ServerMessage = styled.span`
+  display: block;
+  font-weight: bold;
+  color: ${COLOR.WildBlueYonder};
+  text-align: center;
+`;
 
 const S = {
   Container,
   HeaderTitle,
+  MessagesList,
+  Message,
+  MessageAuthor,
+  MessageContent,
+  ServerMessage,
 };
 
 export default S;
-export {};

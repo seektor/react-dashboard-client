@@ -1,24 +1,24 @@
 import styled from "styled-components/macro";
+import { COLOR } from "../../../../styles/color.styled";
+import CommonStyles from "../../../../styles/common.styled";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  ${CommonStyles.DashboardTileCss};
 `;
 
-const ValueContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  padding-bottom: 15px;
+const HeaderTitle = styled.h4`
+  color: ${COLOR.DarkCornflowerBlue};
 `;
 
 const Value = styled.span`
-  font-size: 2rem;
+  color: ${COLOR.Dark};
+  text-align: center;
   font-weight: bold;
-  color: #2185d0;
+  font-size: 1.25rem;
 `;
 
-const S = { Container, ValueContainer, Value };
+const S = { Container, HeaderTitle, Value };
 
 export default S;

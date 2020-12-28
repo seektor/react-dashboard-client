@@ -1,9 +1,17 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store/rootReducer";
 import S from "./Chat.styled";
+import { ChatMessageData } from "./Chat.types";
+import { renderMessage } from "./Chat.utils";
+import ChatAddMessage from "./ChatAddMessage/ChatAddMessage";
 
 const Chat: FunctionComponent = () => {
   //   const { socket } = useContext(DashboardContext);
-  //   const [messagesData, setMessagesData] = useState<ChatMessageData[]>([]);
+  const [messagesData, setMessagesData] = useState<ChatMessageData[]>([]);
+  const userName = useSelector(
+    (state: RootState) => state.authSlice.user?.userName
+  );
   //   const msgListRef = useRef<HTMLDivElement>(null);
 
   //   useEffect(() => {
@@ -47,27 +55,18 @@ const Chat: FunctionComponent = () => {
   return (
     <S.Container>
       <S.HeaderTitle>Chat</S.HeaderTitle>
+
+      <S.MessagesList>
+        {messagesData.length === 0 && (
+          <S.ServerMessage>No messages</S.ServerMessage>
+        )}
+        {messagesData.map((messageDate) => {
+          return renderMessage(messageDate, messageDate.author === userName);
+        })}
+      </S.MessagesList>
+
+      <ChatAddMessage />
     </S.Container>
-    // <S.Container>
-    //   <Header as="h3">Chat</Header>
-    //   <S.MsgList ref={msgListRef}>
-    //     {messagesData.map((messageData) => {
-    //       if (messageData.isServerMsg) {
-    //         return renderServerMessage(messageData.id, messageData.message);
-    //       }
-    //       return renderClientMessage(
-    //         messageData.id,
-    //         "kek",
-    //         messageData.message,
-    //         false
-    //       );
-    //     })}
-    //   </S.MsgList>
-    //   <S.InputRow>
-    //     <S.StyledInput placeholder="Enter your message..." />
-    //     <Button secondary>Send</Button>
-    //   </S.InputRow>
-    // </S.Container>
   );
 };
 

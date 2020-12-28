@@ -5,6 +5,7 @@ import SalesCountDisplay from "../components/SalesCountDisplay/SalesCountDisplay
 import SalesPerRegionBarChart from "../components/SalesPerRegionBarChart/SalesPerRegionBarChart";
 import SalesTable from "../components/SalesTable/SalesTable";
 import TodoList from "../components/TodoList/TodoList";
+import UsersCountDisplay from "../components/UsersCountDisplay/UsersCountDisplay";
 import S from "./Dashboard.styled";
 
 interface DashboardContextData {
@@ -37,26 +38,17 @@ const Dashboard: FunctionComponent = () => {
   return (
     <DashboardContext.Provider value={dashboardContextValue}>
       <S.Grid>
-        <div
-          style={{
-            gridColumn: "1 / span 3",
-            gridRow: "1 / span 2",
-          }}
-        >
-          {/* <UsersCountDisplay /> */}
-        </div>
-        <div
-          style={{
-            gridColumn: "4 / span 3",
-            gridRow: "1 / span 2",
-          }}
-        >
-          <SalesCountDisplay />
-        </div>
+        <S.UsersCountDisplayTile>
+          <UsersCountDisplay />
+        </S.UsersCountDisplayTile>
 
-        <S.SalesTable>
+        <S.SalesCountDisplayTile>
+          <SalesCountDisplay />
+        </S.SalesCountDisplayTile>
+
+        <S.SalesTableTile>
           <SalesTable />
-        </S.SalesTable>
+        </S.SalesTableTile>
 
         <S.SalesPerRegionBarChartTile>
           <SalesPerRegionBarChart />
