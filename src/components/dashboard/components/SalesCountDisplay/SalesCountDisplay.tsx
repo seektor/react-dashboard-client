@@ -10,4 +10,4 @@ const SalesCountDisplay: FunctionComponent = () => {
   );
 };
 
-export default SalesCountDisplay;
+export default React.memo(SalesCountDisplay);

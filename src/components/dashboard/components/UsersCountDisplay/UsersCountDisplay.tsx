@@ -10,5 +10,4 @@ const UsersCountDisplay: FunctionComponent = () => {
   );
 };
 
-export default UsersCountDisplay;
-export {};
+export default React.memo(UsersCountDisplay);

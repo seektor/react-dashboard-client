@@ -70,4 +70,4 @@ const Chat: FunctionComponent = () => {
   );
 };
 
-export default Chat;
+export default React.memo(Chat);

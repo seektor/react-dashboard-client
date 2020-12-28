@@ -185,4 +185,4 @@ const SalesTable: FunctionComponent = () => {
   );
 };
 
-export default SalesTable;
+export default React.memo(SalesTable);

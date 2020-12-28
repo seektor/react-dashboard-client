@@ -29,9 +29,9 @@ const { addToast, removeToast } = toastsSlice.actions;
 
 export const showToast = createAsyncThunk(
   "toasts/showToast",
-  async (payload: { msg: string; type: AlertType }, thunkAPI) => {
+  async (payload: { message: string; type: AlertType }, thunkAPI) => {
     const id = Date.now().toString();
-    const { msg, type } = payload;
+    const { message: msg, type } = payload;
     thunkAPI.dispatch(addToast({ id, msg, type }));
     setTimeout(() => thunkAPI.dispatch(removeToast(id)), 6000);
   }

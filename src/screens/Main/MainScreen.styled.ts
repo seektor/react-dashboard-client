@@ -27,6 +27,7 @@ const HeaderTitle = styled.span`
 const HeaderUserContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 
   & > * {
     margin-left: 0.5rem;

@@ -7,6 +7,7 @@ import Button from "../../components/shared/Button/Button";
 import TextInput from "../../components/shared/TextInput/TextInput";
 import { RootState } from "../../store/rootReducer";
 import { loginUser } from "../../store/slices/auth/authSlice.utils";
+import { useAppDispatch } from "../../store/store";
 import S from "./LoginScreen.styled";
 
 interface LocationState {
@@ -15,6 +16,7 @@ interface LocationState {
 }
 
 const LoginScreen: FunctionComponent = () => {
+  const dispatch = useAppDispatch();
   const location = useLocation<LocationState | undefined>();
   const history = useHistory();
 
@@ -23,7 +25,7 @@ const LoginScreen: FunctionComponent = () => {
   );
   const [password, setPassword] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
-  const { logging, errorMsg: loginError, user } = useSelector(
+  const { logging, errorMessage: loginError, user } = useSelector(
     (state: RootState) => state.authSlice
   );
 
@@ -34,7 +36,7 @@ const LoginScreen: FunctionComponent = () => {
       setErrorMsg("Please enter all the fields.");
     } else {
       setErrorMsg("");
-      loginUser({ userName, password });
+      dispatch(loginUser({ userName, password, history }));
     }
   };
 
@@ -67,8 +69,19 @@ const LoginScreen: FunctionComponent = () => {
               {errorMsg}
             </Alert>
           )}
-          <TextInput placeholder="User Name" onChange={setUserName} />
-          <TextInput placeholder="Password" onChange={setPassword} />
+          <TextInput
+            placeholder="User Name"
+            maxLength={20}
+            value={userName}
+            onChange={setUserName}
+          />
+          <TextInput
+            placeholder="Password"
+            maxLength={20}
+            value={password}
+            onChange={setPassword}
+            type="password"
+          />
           <Button type="submit" disabled={logging}>
             Login
           </Button>

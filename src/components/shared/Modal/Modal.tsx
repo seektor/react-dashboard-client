@@ -31,7 +31,10 @@ const Modal: FunctionComponent<ModalProps> = ({
         alignItems: "center",
       }}
     >
-      <S.MotionDivContainer layoutId={layoutId}>
+      <S.MotionDivContainer
+        layoutId={layoutId}
+        onClick={(e) => e.stopPropagation()}
+      >
         {children}
       </S.MotionDivContainer>
     </motion.div>

@@ -22,6 +22,7 @@ const ToastsManager: FunctionComponent = () => {
               initial={{ opacity: 0, y: -100, scale: 0.3 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -50, scale: 0.5 }}
+              style={{ marginBottom: "0.5rem" }}
             >
               <Alert
                 title={toast.type === AlertType.Success ? "Success" : "Error"}

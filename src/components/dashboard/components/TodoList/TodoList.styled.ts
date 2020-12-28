@@ -25,7 +25,7 @@ const TodoList = styled.div`
   flex-direction: column;
   padding: 0.5rem 0.75rem;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
 `;
 
 const TodoItem = styled.div`

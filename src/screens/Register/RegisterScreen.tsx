@@ -6,7 +6,7 @@ import Alert from "../../components/shared/Alert/Alert";
 import { AlertType } from "../../components/shared/Alert/Alert.types";
 import Button from "../../components/shared/Button/Button";
 import TextInput from "../../components/shared/TextInput/TextInput";
-import { API_LOGIN, API_REGISTER } from "../../constants/api.constants";
+import { API_REGISTER } from "../../constants/api.constants";
 import { RootState } from "../../store/rootReducer";
 import { showToast } from "../../store/slices/toasts/toastsSlice";
 import { useAppDispatch } from "../../store/store";
@@ -42,11 +42,12 @@ const RegisterScreen: FunctionComponent = () => {
       setRegistering(true);
       try {
         await Axios.post(API_REGISTER, { userName, password });
-        dispatch(showToast({ msg: "Hello", type: AlertType.Success }));
-        history.push(API_LOGIN, { userName });
+        dispatch(
+          showToast({ message: "Account created", type: AlertType.Success })
+        );
+        history.push("/login", { userName });
       } catch (error) {
         setErrorMsg(error.response?.data.message || error.message);
-      } finally {
         setRegistering(false);
       }
     }
@@ -77,9 +78,26 @@ const RegisterScreen: FunctionComponent = () => {
               {errorMsg}
             </Alert>
           )}
-          <TextInput placeholder="User Name" onChange={setUserName} />
-          <TextInput placeholder="Password" onChange={setPassword} />
-          <TextInput placeholder="Confirm Password" onChange={setCpassword} />
+          <TextInput
+            value={userName}
+            placeholder="User Name"
+            maxLength={20}
+            onChange={setUserName}
+          />
+          <TextInput
+            value={password}
+            placeholder="Password"
+            maxLength={20}
+            onChange={setPassword}
+            type="password"
+          />
+          <TextInput
+            value={cpassword}
+            placeholder="Confirm Password"
+            maxLength={20}
+            onChange={setCpassword}
+            type="password"
+          />
           <Button type="submit" disabled={registering}>
             Register
           </Button>
