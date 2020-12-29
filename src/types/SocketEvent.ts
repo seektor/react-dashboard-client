@@ -1,4 +1,6 @@
 export enum SocketEvent {
   UserConnected = "USER CONNECTED",
-  userDisconnected = "USER DISCONNECTED",
+  UserDisconnected = "USER DISCONNECTED",
+  UsersCount = "USERS COUNT",
+  UserMessage = "USER MESSAGE",
 }

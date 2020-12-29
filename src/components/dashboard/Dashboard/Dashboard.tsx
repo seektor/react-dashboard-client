@@ -1,4 +1,8 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
+import { useSelector } from "react-redux";
+import io from "socket.io-client";
+import { RootState } from "../../../store/rootReducer";
+import { SocketEvent } from "../../../types/SocketEvent";
 import Chat from "../components/Chat/Chat";
 import ItemTypePerUnitsSoldPieChart from "../components/ItemTypePerUnitsSoldPieChart/ItemTypePerUnitsSoldPieChart";
 import SalesCountDisplay from "../components/SalesCountDisplay/SalesCountDisplay";
@@ -12,21 +16,29 @@ interface DashboardContextData {
   socket: SocketIOClient.Socket | null;
 }
 
+const { REACT_APP_SOCKET_ENDPOINT } = process.env;
+
 export const DashboardContext = React.createContext<DashboardContextData>({
   socket: null,
 });
 
 const Dashboard: FunctionComponent = () => {
   const [socket, setSocket] = useState<SocketIOClient.Socket | null>(null);
+  const userName = useSelector(
+    (state: RootState) => state.authSlice.user?.userName
+  );
 
   useEffect(() => {
-    // const socketClient = io("http://localhost:8000");
-    // setSocket(socketClient);
-    // socketClient.emit(SocketEvents.UserConnected, Date.now().toString());
-    // return () => {
-    //   socketClient.disconnect();
-    // };
-  }, []);
+    if (!REACT_APP_SOCKET_ENDPOINT) {
+      throw new Error("Missing SOCKET_ENDPOINT in the env!");
+    }
+    const socketClient = io(REACT_APP_SOCKET_ENDPOINT);
+    setSocket(socketClient);
+    socketClient.emit(SocketEvent.UserConnected, userName);
+    return () => {
+      socketClient.disconnect();
+    };
+  }, [userName]);
 
   const dashboardContextValue = useMemo(
     () => ({
