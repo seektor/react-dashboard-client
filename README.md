@@ -1,5 +1,7 @@
 # React-dashboard-client
 
+![ScreenShot](https://raw.github.com/seektor/react-dashboard-client/master/Dashboard_view.png)
+
 Application made solely to discover/practice the following libraries/technologies:
 
 - `Redux-toolkit` - Redux toolset
