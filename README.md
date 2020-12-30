@@ -1,10 +1,12 @@
 # React-dashboard-client
 
 Application made solely to discover/practice the following libraries/technologies:
-_ `Redux-toolkit` - Redux toolset
-_ `React-table` - table data manager
-_ `Nivo` - charts library based on d3
-_ `Framer motion` - animation library \* `Socket.io` - websockets wrapper
+
+- `Redux-toolkit` - Redux toolset
+- `React-table` - table data manager
+- `Nivo` - charts library based on d3
+- `Framer motion` - animation library
+- `Socket.io` - websockets wrapper
 
 !! There might be still some visual/css glitches, especially on <1200px width !!
 
